@@ -28,14 +28,9 @@
     controls: false,
     center : true,
     nav: false,
-    navAsThumbnails: true, 
-    navPosition: 'bottom', 
-    navContainer: '.dots'
+    
     // axis: 'vertical'
-    // controlsText: [
-    //     '<img src="img/icon/shevronleft.png">',
-    //     '<img src="img/icon/shevronright.png">'
-    // ]
+    
   });
   document.querySelector('.prev').addEventListener('click', function () {
     slider.goTo('prev');
@@ -44,8 +39,4 @@
   document.querySelector('.next').addEventListener('click', function () {
     slider.goTo('next');
   });
-
-  // document.querySelector('.advantages__icon').addEventListener('click', function () {
-  //   console.log('cas');
-  // });
   
