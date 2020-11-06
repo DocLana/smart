@@ -40,6 +40,26 @@ $(document).ready(function(){
 
   toggleCatalog('.catalog-item__link');
   toggleCatalog('.catalog-item__back');
+
+  // modal
+
+  $('[data-modal=consultation]').on('click', function() {
+    $('.overlay, #consultation').fadeIn('slow');
+
+  });
+  $('.modal__close').on('click', function(){
+    $('.overlay, #consultation, #order, #thanks').fadeOut('slow');
+  });
+  $('.button_mini').on('click', function() {
+    $('.overlay, #order').fadeIn('slow');
+  });
+  $('.button_mini').each(function(i) {
+    $(this).on('click', function() {
+      $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
+      $('.overlay, #order').fadeIn('slow');
+    });
+  });
+
     
   });
 
@@ -62,5 +82,6 @@ $(document).ready(function(){
   // document.querySelector('.next').addEventListener('click', function () {
   //   slider.goTo('next');
   // });
+
  
   
