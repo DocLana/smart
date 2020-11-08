@@ -58,10 +58,57 @@ $(document).ready(function(){
       $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
       $('.overlay, #order').fadeIn('slow');
     });
-  });
+
+  // $('#consultation-form').validate();
+  // $('#consultation form').validate({
+  //   rules: {
+  //     name:"required",
+  //     phone:"required",
+  //     email: {
+  //       required: true,
+  //       email: true
+  //     }
+  //   },
+  //   messages: {
+  //     name: "Пожалуйста, ввудите свое имя",
+  //     phone: "Пожалуйста введите свой номер телефона",
+  //     email: {
+  //       required: "Пожалуйста, введите свою почту",
+  //       email: "Неправильно введен адрес почты"
+  //     } 
+  //   }
+  // });
+  // $('#order form').validate(); 
+  function valideForms(form){
+    $(form).validate({
+      rules: {
+        name:"required",
+        phone:"required",
+        email: {
+          required: true,
+          email: true
+        }
+      },
+      messages: {
+        name: "Пожалуйста, введите свое имя",
+        phone: "Пожалуйста, введите свой номер телефона",
+        email: {
+          required: "Пожалуйста, введите свою почту",
+          email: "Неправильно введен адрес почты"
+        } 
+      }
+    });
+
+  };
+
+  
+  valideForms('#consultation-form'),
+  valideForms('#consultation form'),
+  valideForms('#order form')
+});
 
     
-  });
+  
 
   // const slider = tns({
   //   container: '.carousel__inner',
@@ -82,6 +129,7 @@ $(document).ready(function(){
   // document.querySelector('.next').addEventListener('click', function () {
   //   slider.goTo('next');
   // });
+});
 
  
   
