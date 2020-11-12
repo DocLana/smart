@@ -107,7 +107,25 @@ $(document).ready(function(){
   valideForms('#order form')
 
   $('input[name=phone]').mask("+7(999) 999-99-99");
-});
+  });
+// scroll pageup
+  $(window).scroll(function() {
+    if ($(this).scrollTop() >1600) {
+      $('.pageup').fadeIn();
+    } else {
+      $('.pageup').fadeOut();
+    }
+  });
+
+  // плавный скролл
+
+  $("a[href^='#']").click(function() {
+    const _href = $(this).attr('href');
+    const off=$(_href);
+    $("html, body").animate({scrollTop: off.offset().top+"px"});
+    return false;
+  });
+
 
     
   
