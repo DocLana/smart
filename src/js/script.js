@@ -119,7 +119,7 @@ $(document).ready(function(){
 
   // плавный скролл
 
-  $("a[href^='#']").click(function() {
+  $("a[href='#up']").click(function() {
     const _href = $(this).attr('href');
     const off=$(_href);
     $("html, body").animate({scrollTop: off.offset().top+"px"});
