@@ -27,7 +27,7 @@ $(document).ready(function(){
   $('.catalog-item__content').addClass('catalog-item__content_activ');
   $('.catalog-item__list').removeClass('catalog-item__list_activ');
 
-  function toggleCatalog(item){
+  function toggleSlide(item){
     $(item).each(function(i){
       $(this).on('click', function(e){
         e.preventDefault();
@@ -38,20 +38,44 @@ $(document).ready(function(){
     })
   }
 
-  toggleCatalog('.catalog-item__link');
-  toggleCatalog('.catalog-item__back');
+  toggleSlide('.catalog-item__link');
+  toggleSlide('.catalog-item__back');
 
   // modal
 
   $('[data-modal=consultation]').on('click', function() {
     $('.overlay, #consultation').fadeIn('slow');
-
   });
+
   $('.modal__close').on('click', function(){
     $('.overlay, #consultation, #order, #thanks').fadeOut('slow');
   });
-  $('.button_mini').on('click', function() {
-    $('.overlay, #order').fadeIn('slow');
+
+  $('.button_submit').on('click', function() {
+    if($("#order form").valid()){
+    $('.overlay, #order').fadeOut('slow');
+    $('.overlay, #thanks').fadeIn('slow');
+    }
+  });
+
+  $('#consultation .button_submit').on('click', function() {
+    if($("#consultation form").valid()){
+    $('.overlay, #consultation').fadeOut('slow');
+    $('.overlay, #thanks').fadeIn('slow');
+    }
+  });
+
+  $('#consultation-form .button_submit').on('click', function() {
+    if($("#consultation-form").valid()){
+    $('.overlay, #thanks').fadeIn('slow');
+    }
+  });
+
+  $('#order .button_mini').on('click', function() {
+    if($("#consultation form").valid()){
+    // $('.overlay, #consultation').fadeOut('slow');
+    $('.overlay, #thanks').fadeIn('slow');
+    }
   });
   $('.button_mini').each(function(i) {
     $(this).on('click', function() {
@@ -79,32 +103,58 @@ $(document).ready(function(){
   //   }
   // });
   // $('#order form').validate(); 
-  function valideForms(form){
+  function validateForms(form){
+
     $(form).validate({
       rules: {
-        name:"required",
-        phone:"required",
-        email: {
-          required: true,
-          email: true
-        }
+          name: {
+              required: true,
+              minlength: 2
+          },
+          phone: "required",
+          email: {
+              required: true,
+              email: true
+          }
       },
       messages: {
-        name: "Пожалуйста, введите свое имя",
-        phone: "Пожалуйста, введите свой номер телефона",
-        email: {
-          required: "Пожалуйста, введите свою почту",
-          email: "Неправильно введен адрес почты"
-        } 
+          name: {
+              required: "Пожалуйста, введите свое имя",
+              minlength: jQuery.validator.format("Введите {0} символа!")
+            },
+          phone: "Пожалуйста, введите свой номер телефона",
+          email: {
+            required: "Пожалуйста, введите свою почту",
+            email: "Неправильно введен адрес почты"
+          }
       }
-    });
+  });
+
+    // $(form).validate({
+    //   rules: {
+    //     name:"required",
+    //     phone:"required",
+    //     email: {
+    //       required: true,
+    //       email: true
+    //     }
+    //   },
+    //   messages: {
+    //     name: "Пожалуйста, введите свое имя",
+    //     phone: "Пожалуйста, введите свой номер телефона",
+    //     email: {
+    //       required: "Пожалуйста, введите свою почту",
+    //       email: "Неправильно введен адрес почты"
+    //     } 
+    //   }
+    // });
 
   };
 
   
-  valideForms('#consultation-form'),
-  valideForms('#consultation form'),
-  valideForms('#order form')
+  validateForms('#consultation-form'),
+  validateForms('#consultation form'),
+  validateForms('#order form')
 
   $('input[name=phone]').mask("+7(999) 999-99-99");
   });
