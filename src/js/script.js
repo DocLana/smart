@@ -43,69 +43,141 @@ $(document).ready(function(){
 
   // modal
 
-  $('[data-modal=consultation]').on('click', function() {
-    $('.overlay, #consultation').fadeIn('slow');
-  });
+  // $('[data-modal=consultation]').on('click', function() {
+  //   $('.overlay, #consultation').fadeIn('slow');
+  // });
 
-  $('.modal__close').on('click', function(){
-    $('.overlay, #consultation, #order, #thanks').fadeOut('slow');
-  });
+  // $('.modal__close').on('click', function(){
+  //   $('.overlay, #consultation, #order, #thanks').fadeOut('slow');
+  // });
 
-  $('.button_submit').on('click', function() {
-    if($("#order form").valid()){
-    $('.overlay, #order').fadeOut('slow');
-    $('.overlay, #thanks').fadeIn('slow');
-    }
-  });
-
-  $('#consultation .button_submit').on('click', function() {
-    if($("#consultation form").valid()){
-    $('.overlay, #consultation').fadeOut('slow');
-    $('.overlay, #thanks').fadeIn('slow');
-    }
-  });
-
-  $('#consultation-form .button_submit').on('click', function() {
-    if($("#consultation-form").valid()){
-    $('.overlay, #thanks').fadeIn('slow');
-    }
-  });
-
-  $('#order .button_mini').on('click', function() {
-    if($("#consultation form").valid()){
-    // $('.overlay, #consultation').fadeOut('slow');
-    $('.overlay, #thanks').fadeIn('slow');
-    }
-  });
-  $('.button_mini').each(function(i) {
-    $(this).on('click', function() {
-      $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
-      $('.overlay, #order').fadeIn('slow');
-    });
-
-  // $('#consultation-form').validate();
-  // $('#consultation form').validate({
-  //   rules: {
-  //     name:"required",
-  //     phone:"required",
-  //     email: {
-  //       required: true,
-  //       email: true
-  //     }
-  //   },
-  //   messages: {
-  //     name: "Пожалуйста, ввудите свое имя",
-  //     phone: "Пожалуйста введите свой номер телефона",
-  //     email: {
-  //       required: "Пожалуйста, введите свою почту",
-  //       email: "Неправильно введен адрес почты"
-  //     } 
+  // $('.button_submit').on('click', function() {
+  //   if($("#order form").valid()){
+  //   $('.overlay, #order').fadeOut('slow');
+  //   $('.overlay, #thanks').fadeIn('slow');
   //   }
   // });
-  // $('#order form').validate(); 
-  function validateForms(form){
 
-    $(form).validate({
+  // $('#consultation .button_submit').on('click', function() {
+  //   if($("#consultation form").valid()){
+  //   // $('.overlay, #consultation').fadeOut('slow');
+  //   $('.overlay, #thanks').fadeIn('slow');
+  //   }
+  // });
+
+  // $('#consultation-form .button_submit').on('click', function() {
+  //   if($("#consultation-form").valid()){
+  //   $('.overlay, #thanks').fadeIn('slow');
+  //   }
+  // });
+
+  // $('#order .button_mini').on('click', function() {
+  //   if($("#consultation form").valid()){
+  //   // $('.overlay, #consultation').fadeOut('slow');
+  //   $('.overlay, #thanks').fadeIn('slow');
+  //   }
+  // });
+  // $('.button_mini').each(function(i) {
+  //   $(this).on('click', function() {
+  //     $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
+  //     $('.overlay, #order').fadeIn('slow');
+  //   });
+
+  // // $('#consultation-form').validate();
+  // // $('#consultation form').validate({
+  // //   rules: {
+  // //     name:"required",
+  // //     phone:"required",
+  // //     email: {
+  // //       required: true,
+  // //       email: true
+  // //     }
+  // //   },
+  // //   messages: {
+  // //     name: "Пожалуйста, ввудите свое имя",
+  // //     phone: "Пожалуйста введите свой номер телефона",
+  // //     email: {
+  // //       required: "Пожалуйста, введите свою почту",
+  // //       email: "Неправильно введен адрес почты"
+  // //     } 
+  // //   }
+  // // });
+  // // $('#order form').validate(); 
+  // function validateForms(form){
+
+  //   $(form).validate({
+  //     rules: {
+  //         name: {
+  //             required: true,
+  //             minlength: 2
+  //         },
+  //         phone: "required",
+  //         email: {
+  //             required: true,
+  //             email: true
+  //         }
+  //     },
+  //     messages: {
+  //         name: {
+  //             required: "Пожалуйста, введите свое имя",
+  //             minlength: jQuery.validator.format("Введите {0} символа!")
+  //           },
+  //         phone: "Пожалуйста, введите свой номер телефона",
+  //         email: {
+  //           required: "Пожалуйста, введите свою почту",
+  //           email: "Неправильно введен адрес почты"
+  //         }
+  //     }
+  // });
+
+  //   // $(form).validate({
+  //   //   rules: {
+  //   //     name:"required",
+  //   //     phone:"required",
+  //   //     email: {
+  //   //       required: true,
+  //   //       email: true
+  //   //     }
+  //   //   },
+  //   //   messages: {
+  //   //     name: "Пожалуйста, введите свое имя",
+  //   //     phone: "Пожалуйста, введите свой номер телефона",
+  //   //     email: {
+  //   //       required: "Пожалуйста, введите свою почту",
+  //   //       email: "Неправильно введен адрес почты"
+  //   //     } 
+  //   //   }
+  //   // });
+
+  // };
+
+  
+  // validateForms('#consultation-form'),
+  // validateForms('#consultation form'),
+  // validateForms('#order form')
+
+  // $('input[name=phone]').mask("+7(999) 999-99-99");
+  // });
+
+
+ // Modal
+
+ $('[data-modal=consultation]').on('click', function() {
+  $('.overlay, #consultation').fadeIn('slow');
+});
+$('.modal__close').on('click', function() {
+  $('.overlay, #consultation, #thanks, #order').fadeOut('slow');
+});
+
+$('.button_mini').each(function(i) {
+  $(this).on('click', function() {
+      $('#order .modal__descr').text($('.catalog-item__subtitle').eq(i).text());
+      $('.overlay, #order').fadeIn('slow');
+  })
+});
+
+function validateForms(form){
+  $(form).validate({
       rules: {
           name: {
               required: true,
@@ -129,35 +201,38 @@ $(document).ready(function(){
           }
       }
   });
+};
 
-    // $(form).validate({
-    //   rules: {
-    //     name:"required",
-    //     phone:"required",
-    //     email: {
-    //       required: true,
-    //       email: true
-    //     }
-    //   },
-    //   messages: {
-    //     name: "Пожалуйста, введите свое имя",
-    //     phone: "Пожалуйста, введите свой номер телефона",
-    //     email: {
-    //       required: "Пожалуйста, введите свою почту",
-    //       email: "Неправильно введен адрес почты"
-    //     } 
-    //   }
-    // });
+validateForms('#consultation-form');
+validateForms('#consultation form');
+validateForms('#order form');
 
-  };
+$('input[name=phone]').mask("+7 (999) 999-99-99");
 
-  
-  validateForms('#consultation-form'),
-  validateForms('#consultation form'),
-  validateForms('#order form')
+$('form').submit(function(e) {
+  e.preventDefault();
+  if($(this).valid()){
+  $.ajax({
+      type: "POST",
+      url: "mailer/smart.php",
+      data: $(this).serialize()
+  }).done(function() {
+      $(this).find("input").val("");
+      $('#consultation, #order').fadeOut();
+      $('.overlay, #thanks').fadeIn('slow');
 
-  $('input[name=phone]').mask("+7(999) 999-99-99");
-  });
+      $('form').trigger('reset');
+  }).fail(function() {
+    $(this).find("input").val("");
+    $('#consultation, #order').fadeOut();
+    $('.overlay, #thanks').fadeIn('slow');
+
+    $('form').trigger('reset');
+});
+}
+return false;
+});
+
 // scroll pageup
   $(window).scroll(function() {
     if ($(this).scrollTop() >1600) {
